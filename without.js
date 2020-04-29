@@ -15,18 +15,46 @@ const assertArraysEqual = function(array1, array2) {
   }
 };
 
+// loop through the itemsToRemove
+//    for each item in the items to remove
+        // check if item is in source
+          // if true, we want to remove item from source
+
+          
 const without = function(source, itemsToRemove) {
   let sourceToEdit = [...source];
   for (let x = 0; x < source.length; x++) {
-    for (let y = 0; y < itemsToRemove.length; y++) {
-      if (source[x] === itemsToRemove[y]) {
-        sourceToEdit.splice(x, 1);
-      }
+    const indexOfItemInSource = itemsToRemove.indexOf(source[x])
+    if (indexOfItemInSource > -1) {
+      sourceToEdit.splice(x, 1)
     }
   }
-  console.log(source);
   return sourceToEdit;
 };
+          
+const without = function(source, itemsToRemove) {
+  let sourceToEdit = [...source];
+  for (const item of itemsToRemove) {
+    const indexOfItemInSource = sourceToEdit.indexOf(item)
+    if (indexOfItemInSource > -1) {
+      sourceToEdit.splice(indexOfItemInSource, 1)
+    }
+  }
+  return sourceToEdit;
+};
+
+// const without = function(source, itemsToRemove) {
+//   let sourceToEdit = [...source];
+//   for (let x = 0; x < source.length; x++) {
+//     for (let y = 0; y < itemsToRemove.length; y++) {
+//       if (source[x] === itemsToRemove[y]) {
+//         sourceToEdit.splice(x, 1);
+//       }
+//     }
+//   }
+//   console.log(source);
+//   return sourceToEdit;
+// };
 
 console.log(without([1, 2, 3], [1]));
 console.log(without(["1", "2", "3"], [1, 2, "3"]));
