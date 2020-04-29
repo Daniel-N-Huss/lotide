@@ -21,16 +21,6 @@ const assertArraysEqual = function(array1, array2) {
           // if true, we want to remove item from source
 
           
-const without = function(source, itemsToRemove) {
-  let sourceToEdit = [...source];
-  for (let x = 0; x < source.length; x++) {
-    const indexOfItemInSource = itemsToRemove.indexOf(source[x])
-    if (indexOfItemInSource > -1) {
-      sourceToEdit.splice(x, 1)
-    }
-  }
-  return sourceToEdit;
-};
           
 const without = function(source, itemsToRemove) {
   let sourceToEdit = [...source];
@@ -43,6 +33,20 @@ const without = function(source, itemsToRemove) {
   return sourceToEdit;
 };
 
+
+//again
+//const without = function(source, itemsToRemove) {
+//  let sourceToEdit = [...source];
+//  for (let x = 0; x < source.length; x++) {
+//    const indexOfItemInSource = itemsToRemove.indexOf(source[x])
+//    if (indexOfItemInSource > -1) {
+//      sourceToEdit.splice(x, 1)
+//    }
+//  }
+//  return sourceToEdit;
+//};
+
+//first try
 // const without = function(source, itemsToRemove) {
 //   let sourceToEdit = [...source];
 //   for (let x = 0; x < source.length; x++) {
