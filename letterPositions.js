@@ -1,15 +1,21 @@
-const letterPositions = function(sentence) {
-  const results = {};
+const results = {};
 
+const addToLetterArray = function(sentence, letter) {
+  results[sentence[letter]].push(letter);
+};
+
+const addNewLetterKey = function(sentence, letter) {
+  results[sentence[letter]] = [letter];
+};
+
+const letterPositions = function(sentence) {
   for (let letter = 0; letter < sentence.length; letter++) {
-    if (results[sentence[letter]]) {
-      results[sentence[letter]].push(letter);
-    } else
-      results[sentence[letter]] = [letter];
-    console.log(results);
+    const letterKeyExists = results[sentence[letter]];
+    letterKeyExists ? addToLetterArray(sentence, letter) : addNewLetterKey(sentence, letter);
   }
   return results;
 };
+
 
 
 const eqArrays = function(arr1, arr2) {
@@ -30,6 +36,7 @@ const assertArraysEqual = function(array1, array2) {
 };
 
 const test = letterPositions('hello');
+console.log(test);
 
 assertArraysEqual(test['h'], [0]);
 assertArraysEqual(test['e'], [1]);
