@@ -1,19 +1,31 @@
+const eqArrays = function(arr1, arr2) {
+  for (let i = 0; i < arr1.length || i < arr2.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+
 const eqObjects = function(object1, object2) {
   const object1Keys = Object.keys(object1);
   const object2Keys = Object.keys(object2);
 
-  console.log(object1Keys, ' keys from Object 1');
-  console.log(object2Keys, ' keys from Object 2');
   if (object1Keys.length !== object2Keys.length) {
     return false;
   }
-
   for (const key of object1Keys) {
-    console.log('Object 1 key is ', object1[key], ' Object 2 key is ', object2[key]);
-    if (object1.key !== object2.key) {
+
+    if (Array.isArray(object1[key])) {
+
+      const arrayTest = eqArrays(object1[key], object2[key]);
+
+      if (arrayTest === false) {
+        return false;
+      }
+    } else if (object1[key] !== object2[key]) {
       return false;
     }
-
   }
   return true;
 };
@@ -50,3 +62,13 @@ assertEqual(eqObjects(ab, ba), true);
 
 const abc = {a: '1', b: '2', c: '3' };
 assertEqual(eqObjects(ab, abc), false);
+
+const cd = { c: '1', d: ['2', 3]};
+const dc = { d: ['2', 3], c: '1'};
+
+assertEqual(eqObjects(cd, dc), true);
+
+const cd2 = { c: '1', d: ['2', 3, 4]};
+
+assertEqual(eqObjects(cd, cd2), false);
+
