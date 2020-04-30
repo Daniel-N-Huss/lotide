@@ -30,21 +30,6 @@ const eqObjects = function(object1, object2) {
   return true;
 };
 
-
-/*
-pseudocode
-  need to test of objects have the same number of keys
-  test if key value in each object matches
-
-  make variable that holds number of keys in obj1, test if same as obj 2
-    if not, return false
-  object loop that tries to call the same key in other object
-    if not return false
-    if they all match, return true
-
-
-*/
-
 // Tests
 const assertEqual = function(actual, expected) {
 
