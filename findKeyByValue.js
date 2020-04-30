@@ -27,8 +27,8 @@ const birthYears = {
 
 assertEqual(findKeyByValue(birthYears, '1667'), "George");
 
-const bestTVShowsByGenre = { 
-  sci_fi: "The Expanse",
+const bestTVShowsByGenre = {
+  sciFi: "The Expanse",
   comedy: "Brooklyn Nine-Nine",
   drama:  "The Wire"
 };
