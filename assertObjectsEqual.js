@@ -7,6 +7,7 @@ const eqArrays = function(arr1, arr2) {
   return true;
 };
 
+
 const eqObjects = function(object1, object2) {
   const object1Keys = Object.keys(object1);
   const object2Keys = Object.keys(object2);
@@ -30,29 +31,18 @@ const eqObjects = function(object1, object2) {
   return true;
 };
 
-// Tests
-const assertEqual = function(actual, expected) {
 
-  if (actual === expected) {
-    console.log(`\u2705 ${actual} === ${expected}`);
+const assertObjectsEqual = function(actual, expected) {
+  const inspect = require('util').inspect;
+  if (eqObjects(actual, expected)) {
+    console.log(`\u2705 ${inspect(actual)} === ${inspect(expected)}`);
   } else {
     console.log(`\u274C ${actual} !== ${expected}`);
   }
 };
 
-
 const ab = { a: '1', b: '2' };
 const ba = { b: '2', a: '1' };
-assertEqual(eqObjects(ab, ba), true);
 
-const abc = {a: '1', b: '2', c: '3' };
-assertEqual(eqObjects(ab, abc), false);
+assertObjectsEqual(ab, ba);
 
-const cd = { c: '1', d: ['2', 3]};
-const dc = { d: ['2', 3], c: '1'};
-
-assertEqual(eqObjects(cd, dc), true);
-
-const cd2 = { c: '1', d: ['2', 3, 4]};
-
-assertEqual(eqObjects(cd, cd2), false);
