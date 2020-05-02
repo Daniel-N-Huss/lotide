@@ -23,6 +23,8 @@ const eqObjects = function(object1, object2) {
       if (arrayTest === false) {
         return false;
       }
+    } if ((typeof object1[key]) === 'object' && Array.isArray(object1[key] === false)) {
+      eqObjects(object1[key], object2[key]);
     } else if (object1[key] !== object2[key]) {
       return false;
     }
@@ -41,18 +43,23 @@ const assertEqual = function(actual, expected) {
 };
 
 
-const ab = { a: '1', b: '2' };
-const ba = { b: '2', a: '1' };
-assertEqual(eqObjects(ab, ba), true);
+// const ab = { a: '1', b: '2' };
+// const ba = { b: '2', a: '1' };
+// assertEqual(eqObjects(ab, ba), true);
 
-const abc = {a: '1', b: '2', c: '3' };
-assertEqual(eqObjects(ab, abc), false);
+// const abc = {a: '1', b: '2', c: '3' };
+// assertEqual(eqObjects(ab, abc), false);
 
-const cd = { c: '1', d: ['2', 3]};
-const dc = { d: ['2', 3], c: '1'};
+// const cd = { c: '1', d: ['2', 3]};
+// const dc = { d: ['2', 3], c: '1'};
 
-assertEqual(eqObjects(cd, dc), true);
+// assertEqual(eqObjects(cd, dc), true);
 
-const cd2 = { c: '1', d: ['2', 3, 4]};
+// const cd2 = { c: '1', d: ['2', 3, 4]};
 
-assertEqual(eqObjects(cd, cd2), false);
+// assertEqual(eqObjects(cd, cd2), false);
+
+const obby1 = {a: {b: 1}};
+const obby2 = {a: {b: 1}};
+
+assertEqual(eqObjects(obby1, obby2), true);
