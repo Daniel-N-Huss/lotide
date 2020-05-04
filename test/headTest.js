@@ -1,4 +1,4 @@
-const head = require('../head');
+const head = require('../head.js');
 const assert = require('chai').assert;
 
 describe('#head', () => {
@@ -6,7 +6,7 @@ describe('#head', () => {
     assert.strictEqual(head([1,2,3]), 1);
   });
   it("returns '5' for ['s']", () => {
-    assert.strictEqual(head(['5']), 's');
+    assert.notStrictEqual(head(['5']), 's');
   });
   it("returns '5' for [5,6,7]", () => {
     assert.strictEqual(head([5,6,7]), 5);
@@ -18,6 +18,6 @@ describe('#head', () => {
     assert.strictEqual(head([1]), 1);
   });
   it("returns '5' for []", () => {
-    assert.strictEqual(head([]), 5);
+    assert.notStrictEqual(head([]), 5);
   });
 });

@@ -10,7 +10,6 @@ const middle = function(array) {
       resultArray.push(array[Math.floor(halfArray)]);
     }
   }
-  console.log(resultArray);
   return resultArray;
 };
 
